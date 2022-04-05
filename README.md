@@ -30,3 +30,4 @@ front = cuida da beleza e funcionamento da página
 back = cuida de toda lógica
 atualização do branch - checkout - PULL -checkout - MERGE - checkout - MERGE
 sempre essa ordem acima
+ESTOU NO DEV
