@@ -1,5 +1,5 @@
 # curso22
-Primeiros passos para acesso:
+
 - 1 Abrir vs code e emparelhar com o ubuntu no canto esquerdo inferior da tela.
 - 2 Novo terminal e meter sudo service apache2 start
 - 3 Open folder /var/www/html
