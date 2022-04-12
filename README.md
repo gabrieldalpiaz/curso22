@@ -31,3 +31,5 @@ back = cuida de toda lógica
 atualização do branch - checkout - PULL -checkout - MERGE - checkout - MERGE
 sempre essa ordem acima
 ESTOU NO DEV
+comentar no html é botar na linha e apertar cntrl + ;
+arquivo.ico para colocar imagem na pagina ao lado do nomezinho
