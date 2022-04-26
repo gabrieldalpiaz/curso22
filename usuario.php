@@ -6,31 +6,62 @@
 
 <?php
 
-echo "Teste de números";
+$numero = [4, 2, 5, 1, 10, 100, 50, 3, 9, 12];
 
-echo "<br>";
-echo "<br>";
+function lacoWhile($numero) {
+    $i = 0;
+    $contPares = 0;
 
-$numero = 95;
-$resto = 0;
-
-$resto = $numero % 2;
-
-if ($resto == 0){
-    echo "O número {$numero} é par";
+    while ($contPares < 5) {
+        $resto = $numero[$i] % 2;
+    
+        if ($resto == 0) {
+            $contPares++; // $contPares += 1;
+        }
+    
+        $i++;
+    }
+    
+    echo "<b>Funcao While</b>: i: {$i} contPares: {$contPares} <br><br>";
 }
-else {
-    echo "O número {$numero} é impar";
+
+function lacoDoWhile($numero) {
+    $i = 0;
+    $contPares = 0;
+    do {
+        $resto = $numero[$i] % 2;
+    
+        if ($resto == 0) {
+            $contPares++; // $contPares += 1;
+        }
+    
+        $i++;
+    } while ($contPares < 5);
+    
+    echo "<b>Funcao Do While</b>: i: {$i} contPares: {$contPares} <br><br>";
 }
 
-$soma = 0;
-$valor1 = 10;
-$valor2 = 20;
+function lacoFOR($numero) {
+    $contPares = 0;
+    for ($i = 0; $contPares < 5; $i++) {
 
-$soma = $valor1 + $valor2;
+        $resto = $numero[$i] % 2;
 
-echo "<br><br> A soma dos números {$valor1} + {$valor2} é igual a: {$soma} ";
+        if ($resto == 0) {
+            $contPares++; // $contPares += 1;
+        }
+    }
 
-echo "<br><br>"; 
+    echo "<b>Funcao FOR</b>: i: {$i} contPares: {$contPares} <br><br>";
+}
 
-$_POST
+
+echo "Data hora inicio: " . date("d/m/Y H:i:s") . "<br><br>";
+
+lacoWhile($numero);
+lacoDoWhile($numero);
+lacoFOR($numero);
+
+sleep(2);
+
+echo "Data hora fim: " . date("d/m/Y H:i:s");
