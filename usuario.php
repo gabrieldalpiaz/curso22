@@ -62,6 +62,30 @@ lacoWhile($numero);
 lacoDoWhile($numero);
 lacoFOR($numero);
 
-sleep(2);
-
 echo "Data hora fim: " . date("d/m/Y H:i:s");
+
+$numero = [4, 2, 5, 1, 10, 100, 50, 3, 9, 12];
+
+$i = 0;
+$par = [];
+$impar = [];
+
+
+while ($i <= count($numero)) {
+    $resto = $numero[$i] % 2;
+
+    if ($resto == 0) {
+        $par[] = $numero[$i];
+    }
+    else {
+        $impar[] = $numero[$i];
+    }
+$i++;
+}
+
+
+echo count($par);
+echo count($impar);
+
+?>
+
