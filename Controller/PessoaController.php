@@ -39,17 +39,47 @@
 //    $pessoaFisica->Salvar();
 // }
 
-      $dadosPessoa = [
-         "id" => 10,
-         "nome" => "Aviaozada",
-         "status" => "Ativo",
-         "email" => "aviaozada@curso.com",
-         "phone" => "54 992948541",
-         "gender" => "M",
-         "type" => "CPF",
-         "cep" => "95707284",
+$pessoa = [];
+
+   $idPessoa = $_REQUEST['id'] ?? 0;
+
+      $dadosPessoa = 
+      [
+         [
+            "id" => 5,
+            "nome" => "perfiladeira",
+            "status" => "Ativo",
+            "email" => "aasfrhada@curso.com",
+            "phone" => "54 99298341",
+            "gender" => "F",
+            "type" => "CPF",
+            "cep" => "95707284",
+         ],
+         [
+            "id" => 10,
+            "nome" => "Aviaozada",
+            "status" => "Ativo",
+            "email" => "aviaozada@curso.com",
+            "phone" => "54 992948541",
+            "gender" => "M",
+            "type" => "CPF",
+            "cep" => "95707284",
+         ]
       ];
 
+      $tamanhoarray = count($dadosPessoa);
+
+      for ($i = 0; $i < $tamanhoarray; $i++) {
+
+         $id = $dadosPessoa[$i]["id"] ?? 0;
+ 
+         if ($id == $idPessoa) {
+            $pessoa[] = $dadosPessoa[$i];
+            break;
+         }
+     }
+      
+
       header('Content-Type: application/json; charset=utg-8');
-      echo json_encode($dadosPessoa);
+      echo json_encode($pessoa);
       exit();
