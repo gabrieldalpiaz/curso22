@@ -81,5 +81,5 @@ $pessoa = [];
       
 
       header('Content-Type: application/json; charset=utg-8');
-      echo json_encode($pessoa);
+      echo json_encode($dadosPessoa);
       exit();

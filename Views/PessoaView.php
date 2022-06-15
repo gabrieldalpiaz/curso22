@@ -1,5 +1,31 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
+<?php
+
+   $dadosPessoa = 
+   [
+      [
+         "id" => 5,
+         "name" => "perfiladeira",
+         "status" => "Ativo",
+         "email" => "aasfrhada@curso.com",
+         "phone" => "54 99298341",
+         "gender" => "F",
+         "type" => "CPF",
+         "cep" => "95707284",
+      ],
+      [
+         "id" => 10,
+         "name" => "Aviaozada",
+         "status" => "Ativo",
+         "email" => "aviaozada@curso.com",
+         "phone" => "54 992948541",
+         "gender" => "M",
+         "type" => "CPF",
+         "cep" => "95707284",
+      ]
+   ];
+?>
+
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -186,29 +212,30 @@
                     </div>
                 </div>
                 <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Type</th>
-                            <th scope="col">E-mail</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
+                  
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                                <td>Gabigol</td>
-                                <td>CPF</td>
-                                <td>gabriel@cursophp.com</td>
-                                <td>(54) 992445232</td>
-                                <td>
-                                    <button class="btnEditar btn btn-primary" value="5">Edit</button>
-                                    <button class="btnExcluir btn btn-primary" value="5">Delete</button>
-                                </td>
-                        </tr>
+                        <?php
+                            foreach($dadosPessoa as $pessoa) {
+                                
+                                $html = (
+                                    '<tr>
+                                        <th scope="row">' . $pessoa["id"] . '</th>
+                                            <td>' . $pessoa["name"] . '</td>
+                                            <td>' . $pessoa["email"] . '</td>
+                                            <td>' . $pessoa["phone"] . '</td>
+                                            <td>' . $pessoa["gender"] . '</td>
+                                            <td>
+                                                <button class="btnEditar btn btn-primary" ' . $pessoa["id"]. '">Edit</button>
+                                                <button class="btnExcluir btn btn-primary" ' . $pessoa["id"]. '">Delete</button>
+                                            </td>
+                                    </tr>'
+                                );
+
+                                echo $html;
+                            }
+                        ?>
                     </tbody>
+
                 </table>
             </div>
         </div>
