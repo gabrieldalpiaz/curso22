@@ -1,85 +1,56 @@
 <?php
+    // require_once './Pessoa_Fisica';
+    // require_once './Pessoa_Juridica';
 
-// {
-//    $pessoaFisica = new PessoaFisica();
-   
-//    $pessoaFisica->cpf = $_POST['CPF'];
-//    $pessoaFisica->genero = $_POST['GENERO'];
-//    $pessoaFisica->rg = $_POST['RG'];
-//    $pessoaFisica->est_civil = $_POST['RG'];
-//    $pessoaFisica->datanasc = $_POST['DATANASC'];
-//    $pessoaFisica->naturalidade = $_POST['NATURALIDADE'];
-//    $pessoaFisica->profissão = $_POST['profissão'];     
-//    $pessoaFisica->pis =  $_POST['PIS'];
-//    $pessoaFisica->escolaridade = $_POST['ESCOLARIDADE'];
-   
-//    $pessoaFisica->Salvar();
-// }
-// {
-//    $PessoaJuridica = new PessoaJuridica();
-   
-//    $pessoaFisica->cnpj = $_POST['CNPJ'];
-//    $pessoaFisica->datafund = $_POST['DATAFUND'];
-//    $pessoaFisica->nacionalidade = $_POST['NACIONALIDADE'];
-//    $pessoaFisica->cnae = $_POST['CNAE'];
-   
-//    $pessoaFisica->Salvar();
-// }
-// {
-//    $Pessoa = new Pessoa();
-   
-//    $pessoaFisica->id =  $_POST['id'];
-//    $pessoaFisica->nome =  $_POST['nome'];
-//    $pessoaFisica->cep = $_POST['CEP'];
-//    $pessoaFisica->email = $_POST['EMAIL'];
-//    $pessoaFisica->celular = $_POST['CELULAR'];
-//    $pessoaFisica->redes_sociais = $_POST['REDES_SOCIAIS'];
-//    $pessoaFisica->status = $_POST['STATUS'];
-   
-//    $pessoaFisica->Salvar();
-// }
+    // $pessoa_fisica = new Pessoa_Fisica();
+    // $pessoa_fisica->id = 1;
+    // $pessoa_fisica->CPF = "01299237029";
+    // $pessoa_fisica->RG = "5099009531";
+    // $pessoa_fisica->PIS = "020397804231";
+    // $pessoa_fisica->gender = "MALE";
+    // $pessoa_fisica->marital_status = "SINGLE";
+    // $pessoa_fisica->born = "30/03/1990";
+    // $pessoa_fisica->profession = "PROGRAMADOR";
+    // $pessoa_fisica->schooling = "PÓS GRADUAÇÃO";
 
-$pessoa = [];
+    // $pessoa_juridica = new Pessoa_Juridica();
+    // $pessoa_juridica->id = 2;
+    // $pessoa_juridica->CNPJ = "08199996006230";
+    // $pessoa_juridica->fundation = "01/10/2022";
+    // $pessoa_juridica->CNAE = "159753";
 
-   $idPessoa = $_REQUEST['id'] ?? 0;
+    // $pessoa = new Pessoa();
+    // $pessoa->create($pessoa_fisica);
+    // $pessoa->create($pessoa_juridica);
 
-      $dadosPessoa = 
-      [
-         [
-            "id" => 5,
-            "nome" => "perfiladeira",
-            "status" => "Ativo",
-            "email" => "aasfrhada@curso.com",
-            "phone" => "54 99298341",
-            "gender" => "F",
-            "type" => "CPF",
-            "cep" => "95707284",
-         ],
-         [
-            "id" => 10,
-            "nome" => "Aviaozada",
-            "status" => "Ativo",
-            "email" => "aviaozada@curso.com",
-            "phone" => "54 992948541",
-            "gender" => "M",
-            "type" => "CPF",
-            "cep" => "95707284",
-         ]
-      ];
+    // echo "oooopppaaa";
 
-      $tamanhoarray = count($dadosPessoa);
+    $idPessoa = $_REQUEST["id"] ?? 0;
 
-      for ($i = 0; $i < $tamanhoarray; $i++) {
+    $dadosPessoa = 
+        [
+            [
+                "id" => 10,
+                "name" => "Aviaozinho",
+                "status" => "Ativo",
+                "email" => "aviaozinho@curso.com",
+                "phone" => "54 912345678",
+                "gender" => "M",
+                "type" => "CPF",
+                "cep" => "95707110",
+            ],
+            [
+                "id" => 50,
+                "name" => "Aviaozinhoxxxx",
+                "status" => "Ativo",
+                "email" => "aviaozinhoxxx@curso.com",
+                "phone" => "54 912345678",
+                "gender" => "M",
+                "type" => "CPF",
+                "cep" => "95707110",
+            ]
+    ];
 
-         $id = $dadosPessoa[$i]["id"] ?? 0;
- 
-         if ($id == $idPessoa) {
-            $pessoa[] = $dadosPessoa[$i];
-            break;
-         }
-     }
-      
-
-      header('Content-Type: application/json; charset=utg-8');
-      echo json_encode($dadosPessoa);
-      exit();
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($dadosPessoa);
+    exit();

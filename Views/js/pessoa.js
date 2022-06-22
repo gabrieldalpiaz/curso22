@@ -1,64 +1,78 @@
-$( document ).ready(function() {
-    var baseUrl = "http://localhost/curso22/Controller/PessoaController.php";
-
-    $(".btnEditar").on("click", function(){
-        var idPessoa = $(this).val();
-        baseUrl += "?id=" + idPessoa;
-
-        $.get(baseUrl).done(function(response){
-            var dadosPessoa = response;
-            console.log("I'm click of Edit button id: " + dadosPessoa.id);
-
-            $("#idBanco").val(dadosPessoa.id);
-            $("#idName").val(dadosPessoa.nome);
-            $("#idEmail").val(dadosPessoa.email);
-            $(".modal").modal('show');
-        });
-
+$(document).ready(function() {
+    var url = "http://localhost/curso22/Controller/PessoaController.php";
+    
+    $.get(url).done(function(response) {
+        montarTabela(response);
+    }).fail(function(error) {
+        console.log("Deu erro: " + JSON.stringify(error));
     });
 
-    $(".btnExcluir").on("click", function(){
-        var idPessoa = $(this).val();
+    $("#tabelaPessoas").on("click", ".btnEditar", function() {
+        var id = $(this).val();
+        var urlComId = url + "?id=" + id;
         
+        $.get(urlComId).done(function(response) {
+            // console.log("sou o response: " + JSON.stringify(response));
 
-        $.post(baseUrl, { id: idPessoa }).done(function(response){
-            console.log(JSON.stringify(response))
+            $("#idPessoa").val(response[0].id);
+            $("#nomePessoa").val(response[0].name);
+            $("#staticBackdropLabel").html("Editar");
+            $("#staticBackdrop").modal("show");
+            // $("#staticBackdrop").modal("hide"); // fechar o modal
+
         });
-
-        console.log("I'm click of Delete button id: " + idPessoa);
     });
 
-    function montarCabecalho() {
-        var html = (
-            `<thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Type</th>
-                <th scope="col">E-mail</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>`
-        );
-        
-            return html;
+    $("#tabelaPessoas .btnExcluir").on("click", function() {
+        console.log("sou o clicar do excluir");
+    });
 
+    function montarTabela (dados) {
+        var cabecalho = montarCabecalho();
+        var dados = montarDados(dados);
+        var htmlTabela = (cabecalho + dados);
+        $("#tabelaPessoas").html(htmlTabela);
     }
 
-    function montarDados(pessoas) {
-        var tbody = '<tbody>';
+    function montarCabecalho () {
+        var cabecalho = (
+            `<thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Cep</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>`
+        );
 
-        $.each(pessoas, function(idx, pessoa)){
+        return cabecalho;
+    }
+    
+    function montarDados (dados) {
+        var tbody = `<tbody>`;
 
-        var tr = (
-            `<tr>
-            <td scope="row">${pessoa.id} . '</td>
-            <td>'${pessoa.name} . '</td>
-            <td>'${pessoa.email}. '</td>
-            <td>'${pessoa.phone} . '</td>
-            <td>
-                <button class="btnEditar" value="${pessoa.id}">Edit</button>
-                <button class="btnExcluir" value="${pessoa.id}">Delete</button>
-            </td>
-    </tr>
+        $.each(dados, function(idx, pessoa) {
+            tbody += (
+                `<tr>
+                    <td>${pessoa.id}</td>
+                    <td>${pessoa.name}</td>
+                    <td>${pessoa.email}</td>
+                    <td>${pessoa.phone}</td>
+                    <td>${pessoa.cep}</td>
+                    <td>
+                        <button class="btnEditar" value="${pessoa.id}">Editar</button>
+                        <button class="btnExcluir" value="${pessoa.id}">Excluir</button>
+                    </td>
+                </tr>`
+            );
+        });
+
+        tbody += "</tbody>";
+
+        return tbody;
+    }
+
+});
